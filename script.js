@@ -1,25 +1,28 @@
-document.querySelector('.add-list').onclick = function(){
-    if(document.querySelector('#newtask input').value.length == 0){
-        alert("Please Enter a Task")
-    }
 
-    else{
-        document.querySelector('#tasks').innerHTML += `
-            <div class="task">
-                <span id="taskname">
-                    ${document.querySelector('#newtask input').value}
-                </span>
-                <button class="delete">
-                    <i class="far fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
 
-        var current_tasks = document.querySelectorAll(".delete");
-        for(var i=0; i<current_tasks.length; i++){
-            current_tasks[i].onclick = function(){
-                this.parentNode.remove();
-            }
-        }
+const add =  document.querySelector(".add-button");
+
+add.addEventListener('click' , ()=>{
+    newElement();
+})
+function newElement() {
+    var newDiv = document.createElement("div");
+    var inputValue = document.querySelector(".text").value;
+    var t = document.createTextNode(inputValue);
+    newDiv.appendChild(t);
+    if (inputValue === '') {
+      alert("You must write something!");
+    } else {
+      document.querySelector(".newElement").appendChild(newDiv);
     }
-}
+document.querySelector(".text").value = "";
+  
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    newDiv.appendChild(span);
+  
+    
+  }
+
